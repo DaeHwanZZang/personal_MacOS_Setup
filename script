@@ -1,0 +1,32 @@
+mkdir -p /Users/Shared/bin
+
+cat > /Users/Shared/bin/userkeymapping << 'EOF'
+#!/bin/sh
+hidutil property --set '{"UserKeyMapping":[
+    {"HIDKeyboardModifierMappingSrc":0x7000000E0,"HIDKeyboardModifierMappingDst":0x7000000E3},
+    {"HIDKeyboardModifierMappingSrc":0x7000000E3,"HIDKeyboardModifierMappingDst":0x7000000E0},
+    {"HIDKeyboardModifierMappingSrc":0x7000000E7,"HIDKeyboardModifierMappingDst":0x70000006D}
+]}'
+EOF
+
+chmod 755 /Users/Shared/bin/userkeymapping
+
+sudo tee /Library/LaunchAgents/userkeymapping.plist > /dev/null << 'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>userkeymapping</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/Shared/bin/userkeymapping</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>
+EOF
+
+sudo chown root /Library/LaunchAgents/userkeymapping.plist
+sudo launchctl load /Library/LaunchAgents/userkeymapping.plist
