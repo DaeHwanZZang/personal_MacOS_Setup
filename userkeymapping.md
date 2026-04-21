@@ -1,3 +1,4 @@
+```install
 mkdir -p /Users/Shared/bin
 
 cat > /Users/Shared/bin/userkeymapping << 'EOF'
@@ -30,7 +31,7 @@ EOF
 
 sudo chown root /Library/LaunchAgents/userkeymapping.plist
 sudo launchctl load /Library/LaunchAgents/userkeymapping.plist
-
+```
 -----------------------------------------------------------------
 ```remove
 sudo launchctl remove userkeymapping
