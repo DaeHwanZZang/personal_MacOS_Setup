@@ -30,3 +30,10 @@ EOF
 
 sudo chown root /Library/LaunchAgents/userkeymapping.plist
 sudo launchctl load /Library/LaunchAgents/userkeymapping.plist
+
+-----------------------------------------------------------------
+```remove
+sudo launchctl remove userkeymapping
+sudo rm /Library/LaunchAgents/userkeymapping.plist
+sudo rm /Users/Shared/bin/userkeymapping
+```
