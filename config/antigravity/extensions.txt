@@ -1,0 +1,7 @@
+golang.go
+ms-python.vscode-python-envs
+ms-python.debugpy
+ms-python.python
+llvm-vs-code-extensions.vscode-clangd
+meta.pyrefly
+shopify.ruby-lsp
